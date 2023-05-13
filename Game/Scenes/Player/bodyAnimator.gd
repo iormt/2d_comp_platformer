@@ -11,12 +11,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if char_body.velocity.x > 0:
-		scale.x = -_scale.x
-	elif char_body.velocity.x < 0:
-		scale.x = _scale.x
-	
+func _process(delta):	
 	if char_body.is_on_floor() and char_body.velocity.x != 0:
 		animation_player.play("run")
 	elif (not char_body.is_on_floor() and char_body.velocity.y < 0 and movement_controller.max_jumps - movement_controller.jumps_left 
@@ -29,6 +24,6 @@ func _process(delta):
 	elif not char_body.is_on_floor() and char_body.velocity.y >= 0:
 		animation_player.play("jump_down")
 	else:
-		animation_player.play("idle")
+		animation_player.play("run")
 		
 

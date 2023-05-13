@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var movement_controller : MovementController
 
@@ -8,7 +9,7 @@ func _physics_process(delta):
 	movement_controller.add_gravity(self, delta)
 		
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("jump"):
 		movement_controller.jump(self)
 
 	# Get the input direction and handle the movement/deceleration.

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://g13cf8wykoef"]
+
+[ext_resource type="Script" path="res://Imported Assets/EnemySpawner.gd" id="1_oj4qh"]
+
+[node name="EnemySpawner" type="Node2D" node_paths=PackedStringArray("spawnTimer", "waveTimer", "positions")]
+script = ExtResource("1_oj4qh")
+spawnTimer = NodePath("SpawnTimer")
+waveTimer = NodePath("WaveTimer")
+positions = NodePath("Positions")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="WaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="Top" type="Marker2D" parent="Positions"]
+
+[node name="Middle" type="Marker2D" parent="Positions"]
+
+[node name="Bottom" type="Marker2D" parent="Positions"]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
